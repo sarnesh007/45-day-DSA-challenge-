@@ -1,0 +1,59 @@
+//leet code 73
+class Solution {
+    public void markrow(int matrix[][],int r,int c,int i)
+    {
+        for(int j=0;j<c;j++)
+        {
+            if(matrix[i][j]!=0)
+            {
+                matrix[i][j]=-99;
+            }
+        }
+    }
+    public void markcol(int matrix[][],int r,int c,int j)
+    {
+        for(int i=0;i<r;i++)
+        {
+            if(matrix[i][j]!=0)
+            {
+                matrix[i][j]=-99;
+            }
+        }
+    }
+    public void setZeroes(int[][] matrix) {
+        int r=matrix.length;
+        int c=matrix[0].length;
+
+
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    markrow(matrix,r,c,i);
+                    markcol(matrix,r,c,j);
+                }
+            }
+        }
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(matrix[i][j]==-99)
+                {
+                    matrix[i][j]=0;
+                }
+            }
+        }
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                System.out.print(matrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+    
+    }
+}
